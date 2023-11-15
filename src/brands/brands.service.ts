@@ -6,11 +6,11 @@ import { v4 as uuid } from 'uuid';
 @Injectable()
 export class BrandsService {
   private brands: Brand[] = [
-    {
-      id: uuid(),
-      name: 'toyota',
-      createAt: new Date(),
-    },
+    // {
+    //   id: uuid(),
+    //   name: 'toyota',
+    //   createAt: new Date(),
+    // },
   ];
 
   create(createBrandDto: CreateBrandDto): Brand {
@@ -60,5 +60,9 @@ export class BrandsService {
     this.findOne(id);
     this.brands = this.brands.filter((brand) => brand.id !== id);
     return `This action removes a #${id} brand`;
+  }
+
+  fillBrandsWithSeedData(brands: Brand[]) {
+    this.brands = [...brands];
   }
 }
